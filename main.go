@@ -30,6 +30,7 @@ func init() {
 }
 
 // Benchmark functions
+// Each map contains 1000 elements
 func NMapIntInt_Read(k int) int {
 	return nMapIntInt[k]
 }
@@ -148,6 +149,8 @@ func main() {
 	fmt.Printf("Normal map size: %v\n", len(nMap))
 
 	testSyncMapConcurrency()
+	// Go 1.9 sync.Map has no Len() method: https://github.com/golang/go/issues/20680
+	// So counting elements by traditional way :((
 	var sMapLen int
 	sMap2.Range(func(_, _ interface{}) bool {
 		sMapLen++

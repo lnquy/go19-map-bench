@@ -60,7 +60,7 @@ func BenchmarkNMapIntStr_Read(b *testing.B) {
 func BenchmarkNMapStrStr_Write(b *testing.B) {
 	var tmp string
 	for i := 0; i < b.N; i++ {
-		tmp = fmt.Sprintf("%s", i % 1000)
+		tmp = fmt.Sprintf("%s", i%1000)
 		NMapStrStr_Write(tmp, tmp)
 	}
 }
